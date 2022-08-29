@@ -28,20 +28,45 @@ buttons.appendChild(rock);
 buttons.appendChild(paper);
 buttons.appendChild(scissors);
 
+let userScore = 0;
+let computerScore = 0;
+
 function playGame(userGuess, computerGuess) {
   const items = ["Rock", "Paper", "Scissors"];
   computerGuess = items[Math.floor(Math.random() * items.length)];
 
-  if (userGuess == computerGuess) {
-    outcome.textContent = "It's a tie!";
+  if (userScore == 5) {
+    outcome.textContent = "You won the game!";
+  } else if (computerScore == 5) {
+    outcome.textContent = "You lost the game...";
+  } else if (userGuess == computerGuess) {
+    outcome.textContent = `it's a tie! 
+    Your score: ${userScore}
+    Computer score: ${computerScore}`;
   } else if (userGuess == "Rock" && computerGuess == "Scissors") {
-    outcome.textContent = "You win!";
+    userScore++;
+    outcome.textContent = `You win!
+    Your score: ${userScore}
+    Computer score: ${computerScore}`;
+    return userScore;
   } else if (userGuess == "Paper" && computerGuess == "Rock") {
-    outcome.textContent = "You win!";
+    userScore++;
+    outcome.textContent = `You win!
+    Your score: ${userScore}
+    Computer score: ${computerScore}`;
+    return userScore;
   } else if (userGuess == "Scissors" && computerGuess == "Paper") {
-    outcome.textContent = "You win!";
+    userScore++;
+    outcome.textContent = `You win!
+    Your score: ${userScore}
+    Computer score: ${computerScore}`;
+    return userScore;
   } else {
-    outcome.textContent = "You lose.";
+    computerScore++;
+    outcome.textContent = `You lost.
+    Your score: ${userScore}
+    Computer score: ${computerScore}`;
+    return userLives;
   }
 }
 
