@@ -1,58 +1,83 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+* {
   margin: 0;
   padding: 0;
-  background-color: rgb(45, 45, 45);
 }
 
-header {
+body {
+  display: flex;
+  background-color: rgb(40, 40, 40);
+}
+
+#sidebar-left {
+  background-color: rgba(59, 86, 241, 0.418);
+  height: 100vh;
+  width: 10vw;
+  transform: rotate(5deg);
+}
+
+#sidebar-right {
+  background-color: rgba(59, 86, 241, 0.404);
+  height: 100vh;
+  width: 10vw;
+  transform: rotate(5deg);
+}
+
+#content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
-  margin-top: 50px;
+  color: rgb(59, 87, 241);
+  font-family: "Roboto";
+  height: 100vh;
+  width: 100vw;
 }
 
-header h1 {
-  color: rgb(100, 145, 125);
+#header {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-header p {
-  color: rgb(248, 203, 160);
+#header h1 {
+  color: rgb(245, 105, 94);
+  margin-bottom: 1rem;
 }
 
-/* styles for the buttons */
+#header h3 {
+  margin-bottom: 1rem;
+}
+
 #buttons {
   display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 100px;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
-.rock,
-.paper,
-.scissors {
-  display: inline-block;
-  background-color: rgb(75, 75, 75);
-  border: 2px solid rgb(100, 145, 125);
-  color: rgb(248, 203, 160);
-  padding: 25px;
-  margin: 25px;
+#buttons button {
+  background-color: rgb(82, 82, 82);
+  color: rgb(233, 225, 157);
+  border: 2px solid rgb(245, 105, 94);
+  padding: 1rem;
   cursor: pointer;
+  font-size: 40px;
 }
 
-.rock:hover,
-.paper:hover,
-.scissors:hover {
-  transform: scale(1.1);
+#buttons button:hover {
+  transform: scale(1.1) rotate(5deg);
 }
 
-/* Styles for the outcome */
-#outcome {
+#scores {
   display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  color: rgb(248, 203, 160);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#displayUserScore,
+#displayComputerScore {
+  background-color: rgb(82, 82, 82);
+  color: rgb(135, 147, 211);
+  border: 2px solid rgb(245, 105, 94);
+  padding: 1rem;
 }

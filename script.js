@@ -1,87 +1,50 @@
-const buttons = document.querySelector("#buttons");
-const header = document.querySelector("header");
+const rock = document.querySelector(".rock");
+const papper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const result = document.querySelector("#result");
 
-const title = document.createElement("h1");
-const desc = document.createElement("p");
-title.textContent = "Welcome to Rock, Papaer, Scissors!";
-desc.textContent = "Click on one of the buttons to start.";
-header.appendChild(title);
-header.appendChild(desc);
-
-// Insert button elements (rock, paper, scissors)
-const rock = document.createElement("button");
-const paper = document.createElement("button");
-const scissors = document.createElement("button");
-
-// Insert text and logo's to the buttons
-rock.textContent = "Rock";
-paper.textContent = "Paper";
-scissors.textContent = "Scissors";
-
-// Adding Classes to style with CSS
-rock.classList.add("rock");
-paper.classList.add("paper");
-scissors.classList.add("scissors");
-
-// Adding elements to HTML document
-buttons.appendChild(rock);
-buttons.appendChild(paper);
-buttons.appendChild(scissors);
-
+// Display the running score
 let userScore = 0;
 let computerScore = 0;
+const displayUserScore = document.querySelector("#displayUserScore");
+const displayComputerScore = document.querySelector("#displayComputerScore");
+const getUserScore = document.createElement("p");
+const getComputerScore = document.createElement("p");
+displayUserScore.appendChild(getUserScore);
+displayComputerScore.appendChild(getComputerScore);
 
-function playGame(userGuess, computerGuess) {
+function playRound(userGuess, computerGuess) {
   const items = ["Rock", "Paper", "Scissors"];
   computerGuess = items[Math.floor(Math.random() * items.length)];
+  getUserScore.textContent = userScore;
+  getComputerScore.textContent = computerScore;
 
-  if (userScore == 5) {
-    outcome.textContent = "You won the game!";
-  } else if (computerScore == 5) {
-    outcome.textContent = "You lost the game...";
-  } else if (userGuess == computerGuess) {
-    outcome.textContent = `it's a tie! 
-    Your score: ${userScore}
-    Computer score: ${computerScore}`;
+  if (userGuess == computerGuess) {
+    result.textContent = "It's a tie";
   } else if (userGuess == "Rock" && computerGuess == "Scissors") {
     userScore++;
-    outcome.textContent = `You win!
-    Your score: ${userScore}
-    Computer score: ${computerScore}`;
+    result.textContent = "Rock beats Scissors, You win!";
     return userScore;
   } else if (userGuess == "Paper" && computerGuess == "Rock") {
     userScore++;
-    outcome.textContent = `You win!
-    Your score: ${userScore}
-    Computer score: ${computerScore}`;
+    result.textContent = "Paper breats Rock, You win!";
     return userScore;
   } else if (userGuess == "Scissors" && computerGuess == "Paper") {
     userScore++;
-    outcome.textContent = `You win!
-    Your score: ${userScore}
-    Computer score: ${computerScore}`;
+    result.textContent = "Scissors beats Paper, You win!";
     return userScore;
   } else {
     computerScore++;
-    outcome.textContent = `You lost.
-    Your score: ${userScore}
-    Computer score: ${computerScore}`;
-    return userLives;
+    result.textContent = `${computerGuess} beats ${userGuess}, You lose...`;
+    return computerScore;
   }
 }
-
 rock.addEventListener("click", function () {
-  playGame("Rock");
+  playRound("Rock");
 });
-paper.addEventListener("click", function () {
-  playGame("Paper");
+papper.addEventListener("click", function () {
+  playRound("Paper");
 });
 scissors.addEventListener("click", function () {
-  playGame("Scissors");
+  playRound("Scissors");
 });
-
-// Div that tells the user the outcome
-const outcome = document.querySelector("#outcome");
-const outcomeText = document.createElement("p");
-outcomeText.classList.add("outcomeText");
-outcome.appendChild(outcomeText);
