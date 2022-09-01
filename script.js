@@ -12,29 +12,42 @@ const getUserScore = document.createElement("p");
 const getComputerScore = document.createElement("p");
 displayUserScore.appendChild(getUserScore);
 displayComputerScore.appendChild(getComputerScore);
+getUserScore.textContent = userScore;
+getComputerScore.textContent = computerScore;
+
+function checkWinner() {
+  if (userScore == 5 && userScore > computerScore) {
+    result.textContent  = "You beat the computer, good job!";
+  }
+  if (computerScore == 5 && computer < userScore) {
+    result.textContent = "The computer won, better luck next time...";
+  }
+}
 
 function playRound(userGuess, computerGuess) {
   const items = ["Rock", "Paper", "Scissors"];
   computerGuess = items[Math.floor(Math.random() * items.length)];
-  getUserScore.textContent = userScore;
-  getComputerScore.textContent = computerScore;
 
   if (userGuess == computerGuess) {
     result.textContent = "It's a tie";
   } else if (userGuess == "Rock" && computerGuess == "Scissors") {
     userScore++;
+    getUserScore.textContent = userScore;
     result.textContent = "Rock beats Scissors, You win!";
     return userScore;
   } else if (userGuess == "Paper" && computerGuess == "Rock") {
     userScore++;
+    getUserScore.textContent = userScore;
     result.textContent = "Paper breats Rock, You win!";
     return userScore;
   } else if (userGuess == "Scissors" && computerGuess == "Paper") {
     userScore++;
+    getUserScore.textContent = userScore;
     result.textContent = "Scissors beats Paper, You win!";
     return userScore;
   } else {
     computerScore++;
+    getComputerScore.textContent = computerScore;
     result.textContent = `${computerGuess} beats ${userGuess}, You lose...`;
     return computerScore;
   }
@@ -48,3 +61,5 @@ papper.addEventListener("click", function () {
 scissors.addEventListener("click", function () {
   playRound("Scissors");
 });
+
+
